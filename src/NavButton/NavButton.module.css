@@ -1,8 +1,13 @@
 .button {
+  display: inline-block;
+  margin-right: 40px;
 }
 
 .button :hover {
   border-bottom: 3px solid red;
+}
+.button :active {
+  text-shadow: 2px 1px red;
 }
 
 .button-name {
