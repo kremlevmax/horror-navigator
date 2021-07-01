@@ -1,0 +1,12 @@
+.header {
+  margin: auto;
+  width: 80%;
+  border-top: 3px solid red;
+  border-bottom: 3px solid red;
+  margin-bottom: 20px;
+}
+
+.header-logo-image {
+  display: block;
+  width: 128px;
+}
