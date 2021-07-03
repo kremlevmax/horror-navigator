@@ -4,12 +4,10 @@
 }
 
 .button :hover {
-  border-bottom: 3px solid red;
-}
-.button :active {
   text-shadow: 2px 1px red;
 }
 
 .button-name {
   text-decoration: none;
+  color: #0d0d0d;
 }
