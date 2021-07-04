@@ -8,13 +8,22 @@ const defaultState = {
 
 const movieListReducer = (state, action) => {
   let updatedFavoriteList;
+
   switch (action.type) {
     case "ADD":
-      if (state.favoriteMoviesList.includes(action.item)) {
+      let ifItemIsAlreadyAdded = state.favoriteMoviesList.findIndex(
+        (item) => item.name === action.item.name
+      );
+      if (!ifItemIsAlreadyAdded) {
         updatedFavoriteList = state.favoriteMoviesList;
       } else {
         updatedFavoriteList = state.favoriteMoviesList.concat(action.item);
       }
+      break;
+    case "DELETE":
+      updatedFavoriteList = state.favoriteMoviesList.filter(
+        (item) => item.name !== action.name
+      );
       break;
     default:
       updatedFavoriteList = state.favoriteMoviesList;
@@ -33,7 +42,9 @@ const FavoriteMovieListContextProvider = (props) => {
   const addMovieToFavoriteListHandler = (item) => {
     dispatchMoviListAction({ type: "ADD", item: item });
   };
-  const removeMovieFromFavoriteLiistHandler = (id) => {};
+  const removeMovieFromFavoriteLiistHandler = (name) => {
+    dispatchMoviListAction({ type: "DELETE", name: name });
+  };
 
   const favoriteMovieListContext = {
     favoriteMoviesList: movieListState.favoriteMoviesList,

@@ -49,10 +49,13 @@ const Browse = () => {
           favoriteMovieListContext.addToFavoriteMoviesList(item);
         };
         return (
-          <MovieCard key={index}>
+          <MovieCard
+            key={index}
+            onClickHandler={onClickHandler}
+            buttonName='Add To Favorite'
+          >
             <img src={item.poster} alt={item.name} className={styles.poster} />
             {item.name}
-            <button onClick={onClickHandler}>Add to Favorite</button>
           </MovieCard>
         );
       })}
