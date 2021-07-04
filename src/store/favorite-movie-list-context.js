@@ -1,8 +1,8 @@
 import React from "react";
 
 const FavoriteMovieListContext = React.createContext({
-  listToDisplay: [],
   favoriteMoviesList: [],
+  addedtoFavorite: false,
   addToFavoriteMoviesList: (movie) => {},
   removeFromFavoriteMoviesList: (id) => {},
 });
