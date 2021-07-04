@@ -44,15 +44,28 @@ const Browse = () => {
   return (
     <div>
       {movieList.map((item, index) => {
+        const addedElement = favoriteMovieListContext.favoriteMoviesList.find(
+          (entry) => entry.name === item.name
+        );
+        let isAddedElement = addedElement === undefined ? false : true;
+
         const onClickHandler = (event) => {
           event.preventDefault();
-          favoriteMovieListContext.addToFavoriteMoviesList(item);
+          console.log(isAddedElement);
+          if (isAddedElement) {
+            favoriteMovieListContext.removeFromFavoriteMoviesList(item.name);
+          } else {
+            favoriteMovieListContext.addToFavoriteMoviesList(item);
+            isAddedElement = true;
+          }
         };
+
         return (
           <MovieCard
             key={index}
             onClickHandler={onClickHandler}
             buttonName='Add To Favorite'
+            isItemAdded={isAddedElement}
           >
             <img src={item.poster} alt={item.name} className={styles.poster} />
             {item.name}

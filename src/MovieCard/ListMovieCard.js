@@ -1,5 +1,4 @@
 import styles from "./MovieCard.module.css";
-import { useState } from "react";
 
 const ListMovieCard = (props) => {
   const onClickHandler = (event) => {
