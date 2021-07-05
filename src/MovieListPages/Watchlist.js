@@ -13,7 +13,7 @@ const Watchlist = () => {
     };
 
     return (
-      <div className={styles["main-area"]}>
+      <div className={styles["main-area"]} key='main-area'>
         <ListMovieCard
           key={index}
           buttonType='watchlist'

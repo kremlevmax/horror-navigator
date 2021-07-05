@@ -20,19 +20,17 @@ const MovieCard = (props) => {
   return (
     <div className={styles.card}>
       {props.children}
-      <MDIcons.MdFavorite
-        onClick={onClickFavoriteHandler}
-        alt='Add to Favorite'
-        className={`${favoriteButtonIsClicked && styles["active-icon"]}`}
-      >
-        {props.favoriteButtonName}
-      </MDIcons.MdFavorite>
-      <MDIcons.MdLocalMovies
-        onClick={onClickWatchlistHandler}
-        className={`${watchlistButtonIsClicked && styles["active-icon"]}`}
-      >
-        {props.watchlistButtonName}
-      </MDIcons.MdLocalMovies>
+      <div className={styles.icons}>
+        <MDIcons.MdFavorite
+          onClick={onClickFavoriteHandler}
+          alt='Add to Favorite'
+          className={`${favoriteButtonIsClicked && styles["active-icon"]}`}
+        />
+        <MDIcons.MdLocalMovies
+          onClick={onClickWatchlistHandler}
+          className={`${watchlistButtonIsClicked && styles["active-icon"]}`}
+        />
+      </div>
     </div>
   );
 };

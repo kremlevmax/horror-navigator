@@ -1,3 +1,21 @@
+.poster-block {
+  display: inline-block;
+}
+
+.description-block {
+  vertical-align: top;
+  display: inline-block;
+  margin-left: 10px;
+}
+
 .poster {
   width: 100px;
+}
+
+.movie-name {
+  font-weight: bolder;
+}
+.movie-year {
+  font-weight: lighter;
+  font-size: small;
 }

@@ -15,14 +15,17 @@ const Favorite = () => {
     };
 
     return (
-      <div className={styles["main-area"]}>
+      <div className={styles["main-area"]} key='main-area'>
         <ListMovieCard
           key={index}
           buttonType='favorite'
           onClickHandler={onClickHandler}
         >
           <img src={item.poster} alt={item.name} className={styles.poster} />
-          {item.name}
+          <div className={styles["description-block"]}>
+            <div className={styles["movie-name"]}>{item.name}</div>
+            <div className={styles["movie-year"]}>{item.year}</div>
+          </div>
         </ListMovieCard>
       </div>
     );
