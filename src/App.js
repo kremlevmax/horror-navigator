@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import FavoriteMovieListContextProvider from "./store/FavoriteMovieListContextProvider";
 import Header from "./Header/Header";
@@ -15,6 +15,9 @@ const App = () => {
       <Header />
       <BrowserRouter>
         <TopNavbar />
+        <Route exact path='/'>
+          <Redirect to='/browse' />
+        </Route>
         <Switch>
           <Route path='/browse' exact component={Browse} />
           <Route path='/favorite' component={Favorite} />
