@@ -1,6 +1,6 @@
 import styles from "./MovieCard.module.css";
 import * as MDIcons from "react-icons/md";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const MovieCard = (props) => {
   const [favoriteButtonIsClicked, setFavoriteButtonIsClicked] = useState(false);
@@ -9,6 +9,7 @@ const MovieCard = (props) => {
   );
 
   const onClickFavoriteHandler = (event) => {
+    event.preventDefault();
     props.onClickFavoriteHandler(event);
     setFavoriteButtonIsClicked(!favoriteButtonIsClicked);
   };

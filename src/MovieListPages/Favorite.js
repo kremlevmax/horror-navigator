@@ -15,7 +15,7 @@ const Favorite = () => {
     };
 
     return (
-      <div className={styles["main-area"]} key='main-area'>
+      <div className={styles["main-area"]} key='main-fav-area'>
         <ListMovieCard
           key={index}
           buttonType='favorite'
