@@ -1,4 +1,5 @@
 import styles from "./MovieCard.module.css";
+import * as MDIcons from "react-icons/md";
 
 const ListMovieCard = (props) => {
   const onClickHandler = (event) => {
@@ -8,7 +9,17 @@ const ListMovieCard = (props) => {
   return (
     <div className={styles.card}>
       {props.children}
-      <button onClick={onClickHandler}>{props.buttonName}</button>
+      {props.buttonType === "watchlist" ? (
+        <MDIcons.MdLocalMovies
+          onClick={onClickHandler}
+          className={styles["active-icon"]}
+        />
+      ) : (
+        <MDIcons.MdFavorite
+          onClick={onClickHandler}
+          className={styles["active-icon"]}
+        />
+      )}
     </div>
   );
 };

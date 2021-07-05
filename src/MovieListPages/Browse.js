@@ -42,7 +42,7 @@ const Browse = () => {
   const favoriteMovieListContext = useContext(FavoriteMovieListContext);
 
   return (
-    <div>
+    <div className={styles["main-area"]}>
       {movieList.map((item, index) => {
         const addedToFavoriteElement = favoriteMovieListContext.favoriteMoviesList.find(
           (entry) => entry.name === item.name

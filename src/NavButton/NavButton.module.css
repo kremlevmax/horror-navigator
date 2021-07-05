@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "you-murderer";
+  src: local("you-murderer"),
+    url("../fonts/youmurdererbb_reg.ttf") format("truetype");
+}
+
 .button {
   display: inline-block;
   margin-right: 40px;
@@ -12,4 +18,7 @@
   color: #0d0d0d;
 }
 .total {
+  font-family: "you-murderer";
+  font-size: xx-large;
+  color: red;
 }

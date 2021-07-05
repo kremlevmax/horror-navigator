@@ -15,14 +15,16 @@ const Favorite = () => {
     };
 
     return (
-      <ListMovieCard
-        key={index}
-        buttonName='Remove From Favorite'
-        onClickHandler={onClickHandler}
-      >
-        <img src={item.poster} alt={item.name} className={styles.poster} />
-        {item.name}
-      </ListMovieCard>
+      <div className={styles["main-area"]}>
+        <ListMovieCard
+          key={index}
+          buttonType='favorite'
+          onClickHandler={onClickHandler}
+        >
+          <img src={item.poster} alt={item.name} className={styles.poster} />
+          {item.name}
+        </ListMovieCard>
+      </div>
     );
   });
 };
