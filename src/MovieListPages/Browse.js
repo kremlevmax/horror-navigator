@@ -44,28 +44,50 @@ const Browse = () => {
   return (
     <div>
       {movieList.map((item, index) => {
-        const addedElement = favoriteMovieListContext.favoriteMoviesList.find(
+        const addedToFavoriteElement = favoriteMovieListContext.favoriteMoviesList.find(
           (entry) => entry.name === item.name
         );
-        let isAddedElement = addedElement === undefined ? false : true;
+        let isAddedToFavoriteElement =
+          addedToFavoriteElement === undefined ? false : true;
 
-        const onClickHandler = (event) => {
+        const onClickFavoriteHandler = (event) => {
           event.preventDefault();
-          console.log(isAddedElement);
-          if (isAddedElement) {
+          if (isAddedToFavoriteElement) {
             favoriteMovieListContext.removeFromFavoriteMoviesList(item.name);
           } else {
             favoriteMovieListContext.addToFavoriteMoviesList(item);
-            isAddedElement = true;
+            isAddedToFavoriteElement = true;
+          }
+        };
+
+        const addedToWatchlistElement = favoriteMovieListContext.watchlist.find(
+          (entry) => entry.name === item.name
+        );
+        let isAddedToWatchlistElement =
+          addedToWatchlistElement === undefined ? false : true;
+
+        const onClickWatchlistHandler = (event) => {
+          event.preventDefault();
+          console.log(isAddedToWatchlistElement);
+          console.log(favoriteMovieListContext.watchlist);
+          if (isAddedToWatchlistElement) {
+            console.log("++");
+            favoriteMovieListContext.removeFromWatchlist(item.name);
+          } else {
+            favoriteMovieListContext.addToWatchlist(item);
+            isAddedToWatchlistElement = true;
           }
         };
 
         return (
           <MovieCard
             key={index}
-            onClickHandler={onClickHandler}
-            buttonName='Add To Favorite'
-            isItemAdded={isAddedElement}
+            onClickFavoriteHandler={onClickFavoriteHandler}
+            onClickWatchlistHandler={onClickWatchlistHandler}
+            favoriteButtonName='Add To Favorite'
+            watchlistButtonName='Add To Watchlist'
+            isItemAddedToFavorite={isAddedToFavoriteElement}
+            isItemAddedToWatchlist={isAddedToWatchlistElement}
           >
             <img src={item.poster} alt={item.name} className={styles.poster} />
             {item.name}

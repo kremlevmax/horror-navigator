@@ -5,7 +5,8 @@ const NavButton = (props) => {
   return (
     <li className={styles.button}>
       <Link to={props.name.toLowerCase()} className={styles["button-name"]}>
-        {props.name.toUpperCase()} {props.total}
+        {props.name.toUpperCase()}{" "}
+        <span className={styles.total}>{props.total}</span>
       </Link>
     </li>
   );

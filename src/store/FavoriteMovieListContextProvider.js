@@ -12,10 +12,11 @@ const movieListReducer = (state, action) => {
   let updatedFavoriteList;
   let updatedWatchlist;
   let updatedMovieEntry;
+  let ifItemIsAlreadyAdded;
 
   switch (action.type) {
     case "ADD_TO_FAVORITE":
-      let ifItemIsAlreadyAdded = state.favoriteMoviesList.findIndex(
+      ifItemIsAlreadyAdded = state.favoriteMoviesList.findIndex(
         (movie) => movie.name === action.movie.name
       );
       if (!ifItemIsAlreadyAdded) {
@@ -25,12 +26,15 @@ const movieListReducer = (state, action) => {
         updatedFavoriteList = state.favoriteMoviesList.concat(
           updatedMovieEntry
         );
+        updatedWatchlist = state.watchlist;
       }
       break;
     case "DELETE_FROM_FAVORITE":
       updatedFavoriteList = state.favoriteMoviesList.filter(
         (movie) => movie.name !== action.name
       );
+      updatedWatchlist = state.watchlist;
+
       break;
     case "ADD_TO_WATCHLIST":
       ifItemIsAlreadyAdded = state.watchlist.findIndex(
@@ -41,7 +45,15 @@ const movieListReducer = (state, action) => {
       } else {
         updatedMovieEntry = { ...action.movie, watchlistStatus: true };
         updatedWatchlist = state.watchlist.concat(updatedMovieEntry);
+        updatedFavoriteList = state.favoriteMoviesList;
       }
+      break;
+    case "REMOVE_FROM_WATCHLIST":
+      updatedWatchlist = state.watchlist.filter(
+        (movie) => movie.name !== action.name
+      );
+      updatedFavoriteList = state.favoriteMoviesList;
+
       break;
 
     default:
@@ -75,7 +87,7 @@ const FavoriteMovieListContextProvider = (props) => {
 
   const favoriteMovieListContext = {
     favoriteMoviesList: movieListState.favoriteMoviesList,
-    watchlist: movieListState.favoriteMoviesList,
+    watchlist: movieListState.watchlist,
     addToFavoriteMoviesList: addMovieToFavoriteListHandler,
     removeFromFavoriteMoviesList: removeMovieFromFavoriteLiistHandler,
     addToWatchlist: addToWatchListHandler,
